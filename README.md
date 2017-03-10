@@ -3,32 +3,33 @@
 ## Table of content
 
 - [Ubuntu](#ubuntu)
+- [Kali Linux](#kali-linux)
 - [OSX](#osx)
 - [Windows](#windows)
 - [Android](#android)
 - [Google Chrome](#google-chrome)
 
-## Ubuntu 16.04
+## Ubuntu
 
 1. [Download Ubuntu image](http://releases.ubuntu.com/16.04.2/ubuntu-16.04.2-desktop-amd64.iso).
 2. Install packets
-  1. `apt install -y docker docker-compose`
-  2. `apt install -y emacs atom`
-  3. `apt install -y cmake colormake`
-  4. `apt install -y clang clang-format cppcheck g++ gcc gcc-5 valgrind`
-  5. `apt install -y colordiff`
-  6. `apt install -y htop dstat iptables wireshark netstat iptlist wget ngrep`
-  7. `apt install -y fish`
-  8. `apt install -y ffmpeg vlc`
-  9. `apt install -y golang`
-  10. `apt install -y grc`
-  11. `apt install -y libgstreamer1.5-dev`
-  12. `apt install -y unity-tweak-tool numix-gtk-theme`
-  13. `apt install -y libglib2.0-dev`
-  14. `apt install -y zip unzip`
+  1. `sudo apt install -y docker docker-compose`
+  2. `sudo apt install -y emacs atom`
+  3. `sudo apt install -y cmake colormake`
+  4. `sudo apt install -y clang clang-format cppcheck g++ gcc gcc-5 valgrind`
+  5. `sudo apt install -y colordiff`
+  6. `sudo apt install -y htop dstat iptables wireshark netstat iptlist wget ngrep`
+  7. `sudo apt install -y fish`
+  8. `sudo apt install -y ffmpeg vlc`
+  9. `sudo apt install -y golang`
+  10. `sudo apt install -y grc`
+  11. `sudo apt install -y libgstreamer1.5-dev`
+  12. `sudo apt install -y unity-tweak-tool numix-gtk-theme`
+  13. `sudo apt install -y libglib2.0-dev`
+  14. `sudo apt install -y zip unzip`
   15. `curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher`
   16. `fisher docker-completion`
-  17. `apt install -y nodejs npm`
+  17. `sudo apt install -y nodejs npm`
   18. `npm install -g n bower`
 3. `curl 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' -H 'dnt: 1' -H 'accept-encoding: gzip, deflate, sdch, br' -H 'upgrade-insecure-requests: 1' -H 'authority: dl.google.com' --compressed`
 4. `git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
@@ -80,6 +81,39 @@
   6. `multiple-cursors`
   7. `nginx-mode`
   8. `powerline`
+14. `mkdir -p ~/Work/go`
+
+## Kali Linux
+
+**I have to check which packages are already installed by default before committing this.**
+
+1. `sudo apt-get install -y fish`
+2. `sudo apt-get install -y wget && wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/config.fish -P ~/.config/fish/config.fish`
+3. `sudo apt-get install -y python3`
+4. `sudo apt-get install -y dstat`
+5. `sudo apt-get install -y netstat`
+6. `sudo apt-get install -y wireshark`
+7. `sudo apt-get install -y iptlist`
+8. `sudo apt-get install -y ngrep`
+9. Install tor browser + firefox
+10. `sudo apt-get install -y emacs && git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
+11. Edit `/etc/proxychains.conf`
+  1. Comment strict_chain
+  2. Uncomment dynamic_chain
+  3. Add multiple socks5 proxies
+  4. Test it by starting tor service and launching `proxychains firefox www.duckduckgo.com`
+  5. Go on dnsleaktest.com just to make sure
+12. Edit `/etc/dhcp/dhclient.conf`
+  1. Uncomment `prepend domain-name-servers` line
+  2. Replace `prepend domain-name-servers 127.0.0.1`'s value with OpenDNS
+  3. Make sure it's okay by catting `/etc/resolv.conf`
+13. Make sure reaver is installed
+14. `sudo apt-get install -y sslstrip`
+15. `sudo apt-get install -y dsniff`
+16. `sudo apt-get install -y arpspoof`
+18. `sudo apt-get install -y setoolkit`
+19. `sudo apt-get install -y nslookup`
+20. `sudo apt-get install -y mysql-client`
 
 ## OSX
 Do not install latest OSX version, install OSX El Captain 10.11.x
@@ -109,7 +143,7 @@ Do not install latest OSX version, install OSX El Captain 10.11.x
   6. Make trackpad as easy as possible
   7. Backup
 
-## Windows 10
+## Windows
 
 Download from Epitech Intra & use student license.
 
