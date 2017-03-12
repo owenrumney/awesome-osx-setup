@@ -50,12 +50,15 @@ alias gcheck 'git checkout'
 alias glog 'git log'
 alias gdif 'git diff'
 
+# User management
 alias root 'sudo -i'
 alias su 'sudo -i'
 alias go 'grc go'
 
+# Make wget continue unfinished downloads
 alias wget 'wget -c'
 
+# Colorized outputs
 alias diff 'grc diff'
 alias docker 'grc docker'
 alias gcc 'grc gcc'
@@ -70,8 +73,30 @@ alias ngrep 'ngrep -d any'
 
 alias node 'nodejs'
 
-# Customize Oh My Fish configuration path.
-#set -gx OMF_CONFIG "/home/ullaakut/.config/omf"
+# Utils
+alias fu 'sudo $(history -p \!\!)'
+
+# Docker security container
+alias summon-kali 'docker pull kalilinux/kali-linux-docker'
+
+# Pentest / Security / Anonymity
+alias owasp 'docker pull owasp/zap2docker-stable'
+alias wpscan 'docker pull wpscanteam/wpscan'
+alias metasploit 'docker pull pandrew/metasploit'
+alias dvwa 'docker pull citizenstig/dvwa'
+alias shellsock 'docker pull hmlio/vaas-cve-2014-6271'
+alias heartbleed 'docker pull hmlio/vaas-cve-2014-0160'
+alias sec-ninjas 'docker pull opendns/security-ninjas'
+alias dbench-sec 'docker pull diogomonica/docker-bench-security'
+alias owasp-sheperd 'docker pull ismisepaul/securityshepherd'
+alias owasp-webgoat 'docker pull danmx/docker-owasp-webgoat'
+alias owasp-juicestore 'docker pull bkimminich/juice-shop'
+
+## Aircrack suite
+alias am 'airmon-zc'
+alias ar 'aireplay-ng'
+alias ac 'aircrack-ng'
+alias airo 'airodump-ng'
 
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish

@@ -29,8 +29,9 @@
   14. `sudo apt install -y zip unzip`
   15. `curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher`
   16. `fisher docker-completion`
-  17. `sudo apt install -y nodejs npm`
-  18. `npm install -g n bower`
+  17. `curl -L https://get.oh-my.fish | fish`
+  18. `sudo apt install -y nodejs npm`
+  19. `npm install -g n bower`
 3. `curl 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' -H 'dnt: 1' -H 'accept-encoding: gzip, deflate, sdch, br' -H 'upgrade-insecure-requests: 1' -H 'authority: dl.google.com' --compressed`
 4. `git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
 5. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/config.fish -P ~/.config/fish/`
@@ -85,8 +86,6 @@
 
 ## Kali Linux
 
-**I have to check which packages are already installed by default before committing this.**
-
 1. `sudo apt-get install -y fish`
 2. `sudo apt-get install -y wget && wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/config.fish -P ~/.config/fish/config.fish`
 3. `sudo apt-get install -y python3`
@@ -95,25 +94,33 @@
 6. `sudo apt-get install -y wireshark`
 7. `sudo apt-get install -y iptlist`
 8. `sudo apt-get install -y ngrep`
-9. Install tor browser + firefox
-10. `sudo apt-get install -y emacs && git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
-11. Edit `/etc/proxychains.conf`
-  1. Comment strict_chain
-  2. Uncomment dynamic_chain
+9. `sudo apt install -y zip unzip`
+10. `curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher`
+11. `fisher docker-completion`
+12. `curl -L https://get.oh-my.fish | fish`
+13. Install tor browser + firefox
+14. `sudo apt-get install -y emacs && git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
+15. Edit `/etc/proxychains.conf`
+  1. Comment `strict_chain`
+  2. Uncomment `dynamic_chain`
   3. Add multiple socks5 proxies
   4. Test it by starting tor service and launching `proxychains firefox www.duckduckgo.com`
-  5. Go on dnsleaktest.com just to make sure
-12. Edit `/etc/dhcp/dhclient.conf`
+  5. Go on dnsleaktest.com just to make sure everything is alright
+16. Edit `/etc/dhcp/dhclient.conf`
   1. Uncomment `prepend domain-name-servers` line
   2. Replace `prepend domain-name-servers 127.0.0.1`'s value with OpenDNS
   3. Make sure it's okay by catting `/etc/resolv.conf`
-13. Make sure reaver is installed
-14. `sudo apt-get install -y sslstrip`
-15. `sudo apt-get install -y dsniff`
-16. `sudo apt-get install -y arpspoof`
-18. `sudo apt-get install -y setoolkit`
-19. `sudo apt-get install -y nslookup`
-20. `sudo apt-get install -y mysql-client`
+17. Make sure reaver is installed
+18. `sudo apt-get install -y sslstrip sslstrip2`
+19. `sudo apt-get install -y dsniff`
+20. `sudo apt-get install -y arpspoof`
+21. `sudo apt-get install -y setoolkit`
+22. `sudo apt-get install -y nslookup`
+23. `sudo apt-get install -y dsntracer`
+24. `sudo apt-get install -y python-scapy`
+25. `sudo apt-get install -y mysql-client`
+26. `sudo apt-get install -y reaver`
+27. `git clone https://github.com/GouveaHeitor/nipe && cd nipe && sudo cpan install Switch JSON LWP::UserAgent && sudo perl nipe.pl install && sudo cp nipe.pl /usr/bin/nipe && sudo chmod +x /usr/bin/nipe.pl`
 
 ## OSX
 Do not install latest OSX version, install OSX El Captain 10.11.x
@@ -122,7 +129,7 @@ Do not install latest OSX version, install OSX El Captain 10.11.x
 2. VMWare Fusion
   1. Setup Ubuntu VM for dev
   2. Setup Kali VM for pentesting
-3. istat
+3. iStat
 4. VLC
 5. Microsoft Office
 6. Spotify
