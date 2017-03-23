@@ -35,8 +35,9 @@
 3. `curl 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' -H 'dnt: 1' -H 'accept-encoding: gzip, deflate, sdch, br' -H 'upgrade-insecure-requests: 1' -H 'authority: dl.google.com' --compressed`
 4. `git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
 5. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/config.fish -P ~/.config/fish/`
-6. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/.spacemacs -P ~/`
-7. `unity-tweak-tool`
+6. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/init.el -P ~/.emacs.d/`
+7. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/.spacemacs -P ~/`
+8. `unity-tweak-tool`
   1. Reduce launcher icon size to 26
   2. Disable background blur & suggestions of the research panel for performance
   3. Change date format to show seconds for quick latency testing
@@ -44,10 +45,10 @@
   5. Enable workspace switcher
   6. Change theme to Numix daily and icons to Numix Circle
   7. Change Monospace default font to _Roboto Medium For Powerline Medium 9pt_
-8. Terminal properties
+9. Terminal properties
   1. Disable scrollback limitation
   2. Enable transparency
-9. Atom plugins
+10. Atom plugins
   1. `autocomplete-go`
   2. `builder-go`
   3. `clang-format`
@@ -68,12 +69,12 @@
   18. `multi-cursor`
   19. `navigator-godef`
   20. `tester-go`
-10. Create launcher shortcut to Postman chrome plugin
+11. Create launcher shortcut to Postman chrome plugin
   1. Import Postman collections and utils
   2. Switch to dark theme
-11. Activate guest account
-12. If on a Mac, install camera driver
-13. Install packages in Spacemacs
+12. Activate guest account
+13. If on a Mac, install camera driver
+14. Install packages in Spacemacs
   1. `fish-mode`
   2. `google-translate`
   3. `json-mode`
@@ -82,7 +83,7 @@
   6. `multiple-cursors`
   7. `nginx-mode`
   8. `powerline`
-14. `mkdir -p ~/Work/go`
+15. `mkdir -p ~/Work/go`
 
 ## Kali Linux
 
@@ -100,27 +101,29 @@
 12. `curl -L https://get.oh-my.fish | fish`
 13. Install tor browser + firefox
 14. `sudo apt-get install -y emacs && git clone https://github,con/syl20bnr/spacemacs ~/.emacs.d`
-15. Edit `/etc/proxychains.conf`
+15. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/.spacemacs -P ~/`
+16. `wget https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/init.el -P ~/.emacs.d/`
+17. Edit `/etc/proxychains.conf`
   1. Comment `strict_chain`
   2. Uncomment `dynamic_chain`
   3. Add multiple socks5 proxies
   4. Test it by starting tor service and launching `proxychains firefox www.duckduckgo.com`
   5. Go on dnsleaktest.com just to make sure everything is alright
-16. Edit `/etc/dhcp/dhclient.conf`
+18. Edit `/etc/dhcp/dhclient.conf`
   1. Uncomment `prepend domain-name-servers` line
   2. Replace `prepend domain-name-servers 127.0.0.1`'s value with OpenDNS
   3. Make sure it's okay by catting `/etc/resolv.conf`
-17. Make sure reaver is installed
-18. `sudo apt-get install -y sslstrip sslstrip2`
-19. `sudo apt-get install -y dsniff`
-20. `sudo apt-get install -y arpspoof`
-21. `sudo apt-get install -y setoolkit`
-22. `sudo apt-get install -y nslookup`
-23. `sudo apt-get install -y dsntracer`
-24. `sudo apt-get install -y python-scapy`
-25. `sudo apt-get install -y mysql-client`
-26. `sudo apt-get install -y reaver`
-27. `git clone https://github.com/GouveaHeitor/nipe && cd nipe && sudo cpan install Switch JSON LWP::UserAgent && sudo perl nipe.pl install && sudo cp nipe.pl /usr/bin/nipe && sudo chmod +x /usr/bin/nipe.pl`
+19. Make sure reaver is installed
+20. `sudo apt-get install -y sslstrip sslstrip2`
+21. `sudo apt-get install -y dsniff`
+22. `sudo apt-get install -y arpspoof`
+23. `sudo apt-get install -y setoolkit`
+24. `sudo apt-get install -y nslookup`
+25. `sudo apt-get install -y dsntracer`
+26. `sudo apt-get install -y python-scapy`
+27. `sudo apt-get install -y mysql-client`
+28. `sudo apt-get install -y reaver`
+29. `git clone https://github.com/GouveaHeitor/nipe && cd nipe && sudo cpan install Switch JSON LWP::UserAgent && sudo perl nipe.pl install && sudo cp nipe.pl /usr/bin/nipe && sudo chmod +x /usr/bin/nipe.pl`
 
 ## OSX
 Do not install latest OSX version, install OSX El Captain 10.11.x
