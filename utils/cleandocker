@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker rm -f $(docker ps -a -q)
+docker rmi -f $(docker images -a -q)
+sudo service docker stop
+sudo rm -rf /var/lib/docker/aufs
+sudo rm -f /var/lib/docker/linkgraph.db
+sudo service docker start

@@ -75,9 +75,6 @@ alias ngrep 'ngrep -d any'
 
 alias node 'nodejs'
 
-# Utils
-alias fu '(history -p \!\!) sudo'
-
 # Docker security container
 alias summon-kali 'docker pull kalilinux/kali-linux-docker'
 

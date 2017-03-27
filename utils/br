@@ -1,0 +1,19 @@
+#!/bin/bash
+
+git fetch
+
+# First try with local branch if exists (cut is to remove the '*' on the current branch)
+localBranch=`git branch -a | cut -c 3- | grep -v remote | grep $1`
+
+if [ -n "$localBranch" ]; then
+    git checkout $localBranch
+else
+    # Else, try remote branch
+    remoteBranch=`git branch -a | cut -c 3- | grep remote | grep $1`
+    if [ -n "$remoteBranch" ]; then
+        git checkout --track $remoteBranch
+    else
+        echo "Error: cannot find any branch matching '$1'"
+        exit 1
+    fi
+fi

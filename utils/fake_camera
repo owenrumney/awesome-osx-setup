@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cvlc /home/ullaakut/Downloads/dummy.jpg -I dummy --sout-keep --no-drop-late-frames --no-skip-frames --image-duration 9999 --sout="#transcode{vcodec=h264,fps=15,venc=x264{preset=ultrafast,tune=zerolatency,keyint=30,bframes=0,ref=1,level=30,profile=baseline,hrd=cbr,crf=20,ratetol=1.0,vbv-maxrate=1200,vbv-bufsize=1200,lookahead=0}}:rtp{sdp=rtsp://:8554/live.sdp}" --sout-all
