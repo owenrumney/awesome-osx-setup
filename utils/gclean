@@ -1,0 +1,15 @@
+#!/bin/sh
+
+source "$(git --exec-path)/git-sh-setup"
+
+if git diff-index --quiet HEAD --; then
+  git checkout master
+  git remote update origin --prune
+  for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote &> /dev/null; done
+  git pull --all
+  git branch -r --merged master | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin &> /dev/null
+  git branch --merged master | egrep -v "(^\*|master)" | xargs -n 1 git branch -d &> /dev/null
+else
+  echo "You have pending changes. Finish them before cleaning up."
+  exit 1
+fi
