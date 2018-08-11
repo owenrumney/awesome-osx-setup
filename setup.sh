@@ -17,9 +17,7 @@ me=$(whoami)
 function install_xcode {
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing xcode command line tools... "
     XCODE_SUCCESS=1
-    # xcode-select --install
-
-    true
+    xcode-select --install
 
     if [ "$?" != "0" ]
     then
@@ -33,9 +31,7 @@ function install_xcode {
 function install_homebrew {
     HOMEBREW_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing Homebrew... "
-    # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-    true
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     if [ "$?" != "0" ]
     then
@@ -79,25 +75,23 @@ function install_homebrew {
 function install_apps_and_plugins {
     APPS_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing apps and plugins... "
-    # brew cask install bettertouchtool \
-    #                   docker \
-    #                   google-chrome \
-    #                   iterm2 \
-    #                   istat-menus \
-    #                   postman \
-    #                   qlcolorcode \
-    #                   qlimagesize \
-    #                   qlmarkdown \
-    #                   qlstephen \
-    #                   quicklook-json \
-    #                   resolutionator \
-    #                   shuttle \
-    #                   spotify \
-    #                   steam \
-    #                   the-unarchiver \
-    #                   visual-studio-code
-
-    true
+    brew cask install bettertouchtool \
+                      docker \
+                      google-chrome \
+                      iterm2 \
+                      istat-menus \
+                      postman \
+                      qlcolorcode \
+                      qlimagesize \
+                      qlmarkdown \
+                      qlstephen \
+                      quicklook-json \
+                      resolutionator \
+                      shuttle \
+                      spotify \
+                      steam \
+                      the-unarchiver \
+                      visual-studio-code
 
     if [ "$?" != "0" ]
     then
@@ -213,10 +207,8 @@ function install_utils {
 function install_fish {
     FISH_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing fish shell... "
-    # echo "/usr/local/bin/fish" >> /etc/shells
-    # chsh -s /usr/local/bin/fish
-
-    true
+    echo "/usr/local/bin/fish" >> /etc/shells
+    chsh -s /usr/local/bin/fish
 
     if [ "$?" != "0" ]
     then
@@ -227,9 +219,7 @@ function install_fish {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish... "
-    # curl -L https://get.oh-my.fissh | fish
-
-    true
+    curl -L https://get.oh-my.fissh | fish
 
     if [ "$?" != "0" ]
     then
@@ -240,14 +230,12 @@ function install_fish {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish plugins & themes... "
-    # omf install brew \
-    #             cd \
-    #             grc \
-    #             osx \
-    #             agnoster
-    # omf theme agnoster
-
-    true
+    omf install brew \
+                cd \
+                grc \
+                osx \
+                agnoster
+    omf theme agnoster
 
     if [ "$?" != "0" ]
     then
@@ -258,18 +246,16 @@ function install_fish {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure fish shell... "
-    # mkdir -p ~/.config/fish/functions
+    mkdir -p ~/.config/fish/functions
 
-    # echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
-    # echo 'set PATH $PATH /usr/local/sbin' >> ~/.config/fish/config.fish
-    # echo 'set PATH $PATH /usr/local/bin' >> ~/.config/fish/config.fish
-    # echo 'set PATH $PATH /usr/sbin' >> ~/.config/fish/config.fish
-    # echo 'set PATH $PATH /usr/bin' >> ~/.config/fish/config.fish
-    # echo 'set PATH $PATH /sbin' >> ~/.config/fish/config.fish
-    # echo 'set PATH $PATH /bin' >> ~/.config/fish/config.fish
-    # echo "set -g default_user $me" >> ~/.config/fish/config.fish
-
-    true
+    echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
+    echo 'set PATH $PATH /usr/local/sbin' >> ~/.config/fish/config.fish
+    echo 'set PATH $PATH /usr/local/bin' >> ~/.config/fish/config.fish
+    echo 'set PATH $PATH /usr/sbin' >> ~/.config/fish/config.fish
+    echo 'set PATH $PATH /usr/bin' >> ~/.config/fish/config.fish
+    echo 'set PATH $PATH /sbin' >> ~/.config/fish/config.fish
+    echo 'set PATH $PATH /bin' >> ~/.config/fish/config.fish
+    echo "set -g default_user $me" >> ~/.config/fish/config.fish
 
     if [ "$?" != "0" ]
     then
@@ -283,13 +269,11 @@ function install_fish {
 function download_terminal_themes {
     ITERM_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download iterm2 themes & color schemes... "
-    # curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
-    # curl -o ~/Downloads/iterm-config.json https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
-    # unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
-    # mkdir ~/Downloads/themes && \
-    # mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
-
-    true
+    curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
+    curl -o ~/Downloads/iterm-config.json https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
+    unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
+    mkdir ~/Downloads/themes && \
+    mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
 
     if [ "$?" != "0" ]
     then
@@ -303,11 +287,9 @@ function download_terminal_themes {
 function download_bettertouchtool_presets {
     BTT_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download BetterTouchTool presets... "
-    # curl -o ~/Downloads/btt.zip -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
-    # unzip ~/Downloads/btt.zip && rm -f ~/Downloads/btt.zip && \
-    # mv ~/Downloads/btt-touchbar-presets-master ~/Downloads/btt
-
-    true
+    curl -o ~/Downloads/btt.zip -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
+    unzip ~/Downloads/btt.zip && rm -f ~/Downloads/btt.zip && \
+    mv ~/Downloads/btt-touchbar-presets-master ~/Downloads/btt
 
     if [ "$?" != "0" ]
     then
@@ -338,12 +320,10 @@ function configure_git {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Generate SSH key... "
-    # ssh-keygen -t rsa -b 4096 -C $EMAIL && \
-    # eval "$(ssh-agent -s)" && \
-    # ssh-add ~/.ssh/id_rsa && \
-    # pbcopy < ~/.ssh/id_rsa.pub
-
-    true
+    ssh-keygen -t rsa -b 4096 -C $EMAIL && \
+    eval "$(ssh-agent -s)" && \
+    ssh-add ~/.ssh/id_rsa && \
+    pbcopy < ~/.ssh/id_rsa.pub
 
     if [ "$?" != "0" ]
     then
@@ -452,19 +432,18 @@ read -e -p "Would you like for the script to execute all of the above? [y/N]" EX
 
 if [ "$EXECUTE_ALL" == "y" ]
 then
-    my_test
-    # install_xcode
-    # install_homebrew
-    # install_apps_and_plugins
-    # install_nerd_fonts
-    # install_sys_tools
-    # brew_cleanup
-    # install_utils
-    # install_fish
-    # download_terminal_themes
-    # download_bettertouchtool_presets
-    # configure_git
-    # configure_osx_defaults
+    install_xcode
+    install_homebrew
+    install_apps_and_plugins
+    install_nerd_fonts
+    install_sys_tools
+    brew_cleanup
+    install_utils
+    install_fish
+    download_terminal_themes
+    download_bettertouchtool_presets
+    configure_git
+    configure_osx_defaults
     echo "The iterm2 and BetterTouchTool configuration files can be found in your ~/Downloads folder and your public SSH key is in your clipboard, ready to be uploaded to your source control"
 else
     read -e -p "Would you like to install xcode command line tools? [y/N]" EXECUTE_XCODE
@@ -542,102 +521,102 @@ fi
 
 echo -e "\n"$COL_GREEN"$ARROW"$COL_RESET" OSX setup over. Summary:\n"
 
-if [ "$EXECUTE_BTT" == "y" ]
+if [ "$EXECUTE_BTT" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
     echo -e "The BetterTouchTool configuration files can be found in your "$COL_GREEN" ~/Downloads "$COL_RESET" folder"
 fi
 
-if [ "$EXECUTE_ITERM" == "y" ]
+if [ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
     echo -e "The iterm2 configuration files can be found in your "$COL_GREEN" ~/Downloads "$COL_RESET" folder"
 fi
 
-if [ "$EXECUTE_GIT" == "y" ]
+if [ "$EXECUTE_GIT" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
     echo -e "Your public "$COL_GREEN" SSH key is in your clipboard "$COL_RESET", ready to be uploaded to your source control"
 fi
 
-if [ "$XCODE_SUCCESS" == "1" ] && [ "$EXECUTE_XCODE" == "y" ]
+if [ "$XCODE_SUCCESS" == "1" ] && ([ "$EXECUTE_XCODE" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[install xcode command line tools]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_XCODE" == "y" ]
+    echo -e "\t[install xcode command line tools]\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_XCODE" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[install xcode command line tools]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[install xcode command line tools]\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$HOMEBREW_SUCCESS" == "1" ] && [ "$EXECUTE_HOMEBREW" == "y" ]
+if [ "$HOMEBREW_SUCCESS" == "1" ] && ([ "$EXECUTE_HOMEBREW" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[install & configure homebrew]\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_HOMEBREW" == "y" ]
+    echo -e "\t[install & configure homebrew]\t\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_HOMEBREW" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[install & configure homebrew]\t\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[install & configure homebrew]\t\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$APPS_SUCCESS" == "1" ] && [ "$EXECUTE_APPS" == "y" ]
+if [ "$APPS_SUCCESS" == "1" ] && ([ "$EXECUTE_APPS" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[install apps & plugins]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_APPS" == "y" ]
+    echo -e "\t[install apps & plugins]\t\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_APPS" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[install apps & plugins]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[install apps & plugins]\t\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$FONTS_SUCCESS" == "1" ] && [ "$EXECUTE_NERD_FONTS" == "y" ]
+if [ "$FONTS_SUCCESS" == "1" ] && ([ "$EXECUTE_NERD_FONTS" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[install nerd fonts]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_NERD_FONTS" == "y" ]
+    echo -e "\t[install nerd fonts]\t\t\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_NERD_FONTS" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[install nerd fonts]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[install nerd fonts]\t\t\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$SYS_TOOLS_SUCCESS" == "1" ] && [ "$EXECUTE_SYS_TOOLS" == "y" ]
+if [ "$SYS_TOOLS_SUCCESS" == "1" ] && ([ "$EXECUTE_SYS_TOOLS" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
     echo -e "\t[install system tools, command line apps & libraries]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_SYS_TOOLS" == "y" ]
+elif [ "$EXECUTE_SYS_TOOLS" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
     echo -e "\t[install system tools, command line apps & libraries]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$UTILS_SUCCESS" == "1" ] && [ "$EXECUTE_UTILS" == "y" ]
+if [ "$UTILS_SUCCESS" == "1" ] && ([ "$EXECUTE_UTILS" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[install git/docker custom scripts]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_UTILS" == "y" ]
+    echo -e "\t[install git/docker custom scripts]\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_UTILS" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[install git/docker custom scripts]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[install git/docker custom scripts]\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$FISH_SUCCESS" == "1" ] && [ "$EXECUTE_FISH" == "y" ]
+if [ "$FISH_SUCCESS" == "1" ] && ([ "$EXECUTE_FISH" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[install fish, OhMyFish, themes and plugins]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_FISH" == "y" ]
+    echo -e "\t[install fish, OhMyFish, themes and plugins]\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_FISH" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[install fish, OhMyFish, themes and plugins]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[install fish, OhMyFish, themes and plugins]\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$ITERM_SUCCESS" == "1" ] && [ "$EXECUTE_ITERM" == "y" ]
+if [ "$ITERM_SUCCESS" == "1" ] && ([ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[download iterm2 themes and color schemes]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_ITERM" == "y" ]
+    echo -e "\t[download iterm2 themes and color schemes]\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[download iterm2 themes and color schemes]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[download iterm2 themes and color schemes]\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$BTT_SUCCESS" == "1" ] && [ "$EXECUTE_ITERM" == "y" ]
+if [ "$BTT_SUCCESS" == "1" ] && ([ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[download BetterTouchTool presets]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_ITERM" == "y" ]
+    echo -e "\t[download BetterTouchTool presets]\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[download BetterTouchTool presets]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[download BetterTouchTool presets]\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$GIT_SUCCESS" == "1" ] && [ "$EXECUTE_GIT" == "y" ]
+if [ "$GIT_SUCCESS" == "1" ] && ([ "$EXECUTE_GIT" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
-    echo -e "\t[configure git & generate ssh keys]\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_GIT" == "y" ]
+    echo -e "\t[configure git & generate ssh keys]\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
+elif [ "$EXECUTE_GIT" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[configure git & generate ssh keys]\t"$COL_RED"$FAILURE" $COL_RESET
+    echo -e "\t[configure git & generate ssh keys]\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$EXECUTE_OSX" == "y" ]
+if [ "$EXECUTE_OSX" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
-    echo -e "\t[configure OSX defaults]\t"$COL_GREEN"$SUCCESS" $COL_RESET
+    echo -e "\t[configure OSX defaults]\t\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
 fi
