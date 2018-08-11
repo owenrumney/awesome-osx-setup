@@ -1,27 +1,41 @@
 # New Environment Bootstrap
 
-0. Run `./setup.sh`
-1. Google Chrome
-2. VMWare Fusion
-  1. Setup Ubuntu VM for dev
-  2. Setup Kali VM for pentesting
-3. iStat
-4. VLC
-5. Microsoft Office
-6. Spotify
-7. Skype
-8. Stremio
-9. TeamViewer
-10. Disk Inventory X
-11. Adobe Photoshop
-12. Spectacle
-13. Transmission
-14. f.lux
-15. Settings
-  1. Hot corner to lock
-  2. Reduce keypress for accents as much as possible
-  3. Put dock on the right
-  4. Disable dashboard
-  5. Reverse scroll
-  6. Make trackpad as easy as possible
-  7. Backup
+* Run `./setup.sh` and follow the instructions
+* Manually install
+  * VLC
+  * Microsoft Office
+  * Stremio
+  * TeamViewer
+  * Disk Inventory X
+  * Adobe Photoshop
+  * Spectacle
+  * Transmission
+  * High Sierra Media Key Enabler
+    * Open at login
+* Change settings
+  * OSX
+    * Hot corner to lock
+    * Reduce keypress for accents as much as possible
+    * Put dock on the right
+    * Disable dashboard
+    * Reverse scroll
+    * Make trackpad as easy as possible
+    * Backup
+  * iStat Menu
+    * Change fan configuration to keep CPU cool
+    * Try to make it look like this <br/>![this](images/menubar.png)
+  * VScode
+    * Import configuration
+    * Install extensions
+      * VS Live Share
+      * Go
+      * LaTeX Workshop
+      * markdownlint
+      * C/C++
+      * Docker
+      * Git history
+      * GitLens
+      * dep
+      * Material Theme
+      * One Monokay Theme
+      * Prettier

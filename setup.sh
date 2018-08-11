@@ -22,9 +22,9 @@ function install_xcode {
     if [ "$?" != "0" ]
     then
         XCODE_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"xcode might already be installed"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"xcode installed"$COL_RESET
     fi
 }
 
@@ -38,12 +38,10 @@ function install_homebrew {
         HOMEBREW_SUCCESS=0
         echo -e $COL_RED"could not install homebrew"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"installed homebrew"$COL_RESET
     fi
 
-    echo -e $COL_GREEN"$ARROW "$COL_RESET"Configuring Homebrew... "
     brew doctor
-    echo -e $COL_GREEN"done"$COL_RESET
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Adding custom homebrew casks... "
     brew tap caskroom/cask && \
@@ -57,7 +55,7 @@ function install_homebrew {
         HOMEBREW_SUCCESS=0
         echo -e $COL_RED"brew tap failed"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully added custom homebrew casks"$COL_RESET
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Updating, Upgrading and Cleaning Homebrew... "
@@ -66,9 +64,9 @@ function install_homebrew {
     if [ "$?" != "0" ]
     then
         HOMEBREW_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not update, upgrade or cleanup brew"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully cleaned brew"$COL_RESET
     fi
 }
 
@@ -96,9 +94,9 @@ function install_apps_and_plugins {
     if [ "$?" != "0" ]
     then
         APPS_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"error while installing apps and plugins"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully installed all apps and plugins"$COL_RESET
     fi
 }
 
@@ -136,15 +134,15 @@ function install_nerd_fonts {
     if [ "$?" != "0" ]
     then
         FONTS_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"error while installing fonts"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully installed all fonts"$COL_RESET
     fi
 }
 
 function install_sys_tools {
     SYS_TOOLS_SUCCESS=1
-    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing nerd fonts... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing system tools, command line apps and libraries ... "
     brew install autoconf \
                 coreutils \
                 curl \
@@ -174,16 +172,23 @@ function install_sys_tools {
     if [ "$?" != "0" ]
     then
         SYS_TOOLS_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"error while installing sys tools, cmd line apps and libraries"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully installed all system tools, command line apps and libraries"$COL_RESET
     fi
 }
 
 function brew_cleanup {
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Updating, Upgrading and Cleaning Homebrew... "
     brew update && brew upgrade && brew cleanup && brew cask cleanup
-    echo -e $COL_GREEN"done"$COL_RESET
+
+    if [ "$?" != "0" ]
+    then
+        HOMEBREW_SUCCESS=0
+        echo -e $COL_RED"could not update, upgrade or cleanup brew"$COL_RESET
+    else
+        echo -e $COL_GREEN"successfully cleaned brew"$COL_RESET
+    fi
 }
 
 function install_utils {
