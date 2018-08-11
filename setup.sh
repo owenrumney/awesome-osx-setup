@@ -30,6 +30,10 @@ function install_xcode {
 
 function install_homebrew {
     HOMEBREW_SUCCESS=1
+
+    # This fixes a permission issue if there are multiple users on the mac
+    sudo chown -R $(whoami) $(brew --prefix)/*
+
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing Homebrew... "
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -43,9 +47,6 @@ function install_homebrew {
 
     # Just to avoid a potential bug
     mkdir -p ~/Library/Caches/Homebrew/Formula
-
-    # This fixes a permission issue if there are multiple users on the mac
-    sudo chown -R $(whoami) $(brew --prefix)/*
 
     brew doctor
 
@@ -285,8 +286,7 @@ function download_terminal_themes {
     curl -o ~/Downloads/com.googlecode.iterm2.plist https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/com.googlecode.iterm2.plist && \
     curl -o ~/Downloads/UllaakutDark.itermcolors https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/UllaakutDark.itermcolors && \
     unzip ~/Downloads/iterm.zip -d ~/Downloads && rm -f ~/Downloads/iterm.zip && \
-    mkdir -p ~/Downloads/themes/iterm2 && \
-    mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
+    mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/ && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
 
     if [ "$?" != "0" ]
     then
