@@ -45,7 +45,7 @@ function install_homebrew {
     mkdir -p ~/Library/Caches/Homebrew/Formula
 
     # This fixes a permission issue if there are multiple users on the mac
-    sudo chown -R $(whoami):admin /usr/local
+    sudo chown -R $(whoami) $(brew --prefix)/*
 
     brew doctor
 
@@ -285,7 +285,7 @@ function download_terminal_themes {
     curl -o ~/Downloads/com.googlecode.iterm2.plist https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/com.googlecode.iterm2.plist && \
     curl -o ~/Downloads/UllaakutDark.itermcolors https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/UllaakutDark.itermcolors && \
     unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
-    mkdir -p ~/Downloads/themes && \
+    mkdir -p ~/Downloads/themes/iterm2 && \
     mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
 
     if [ "$?" != "0" ]
@@ -612,10 +612,10 @@ then
     echo -e "\t[download iterm2 themes and color schemes]\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
-if [ "$BTT_SUCCESS" == "1" ] && ([ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
+if [ "$BTT_SUCCESS" == "1" ] && ([ "$EXECUTE_BTT" == "y" ] || [ "$EXECUTE_ALL" == "y" ])
 then
     echo -e "\t[download BetterTouchTool presets]\t\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
-elif [ "$EXECUTE_ITERM" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
+elif [ "$EXECUTE_BTT" == "y" ] || [ "$EXECUTE_ALL" == "y" ]
 then
     echo -e "\t[download BetterTouchTool presets]\t\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
