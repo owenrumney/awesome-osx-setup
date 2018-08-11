@@ -10,7 +10,6 @@ COL_GREEN=$ESC_SEQ"32;01m"
 ARROW="\xE2\x96\xB6"
 SUCCESS="\xE2\x9C\x94 success"
 FAILURE="\xE2\x9C\x96 failure"
-EXECUTE_ALL="n"
 
 me=$(whoami)
 

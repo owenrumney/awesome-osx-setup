@@ -12,6 +12,27 @@
   * Transmission
   * High Sierra Media Key Enabler
     * Open at login
+  * Chrome extensions
+    * AdBlock Plus
+    * Appear.in screen sharing
+    * Material Theme for Dev tools
+    * No Coin (bitcoin miner blocker)
+    * Social Fixer for Facebook
+    * Stylus
+      * CircleCI Dark
+      * Clear Dark Facebook
+      * Dark gmail
+      * Dark Google Calendar
+      * Dark HN
+      * Dark TwitchTV
+      * GitHub Dark
+      * Godoc.org Dark
+      * Google clean dark
+      * Slack Night mode
+      * Stackoverflow dark
+      * Stylus dark
+      * Toggl Dark Theme
+      * Wikipedia dark material design
 * Change settings
   * OSX
     * Hot corner to lock
