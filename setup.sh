@@ -284,7 +284,7 @@ function download_terminal_themes {
     curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
     curl -o ~/Downloads/com.googlecode.iterm2.plist https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/com.googlecode.iterm2.plist && \
     curl -o ~/Downloads/UllaakutDark.itermcolors https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/UllaakutDark.itermcolors && \
-    unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
+    unzip ~/Downloads/iterm.zip -d ~/Downloads && rm -f ~/Downloads/iterm.zip && \
     mkdir -p ~/Downloads/themes/iterm2 && \
     mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
 
