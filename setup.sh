@@ -7,37 +7,36 @@ COL_RESET=$ESC_SEQ"39;49;00m"
 COL_RED=$ESC_SEQ"31;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
+ARROW="\xE2\x96\xB6"
+FAILURE="\xE2\x9C\x96"
 EXECUTE_ALL="n"
 
 me=$(whoami)
 
-function my_test {
-    MY_TEST_SUCCESS=1
-
-    ls dick
+function install_xcode {
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing xcode command line tools... "
+    XCODE_SUCCESS=1
+    xcode-select --install
 
     if [ "$?" != "0" ]
     then
-        MY_TEST_SUCCESS=0
+        XCODE_SUCCESS=0
+        echo -e $COL_RED"failure"$COL_RESET
+    else
+        echo -e $COL_GREEN"done"$COL_RESET
     fi
 }
 
-function install_xcode {
-    echo "Installing xcode command line tools... "
-    xcode-select --install
-    echo -e $COL_GREEN"done"$COL_RESET
-}
-
 function install_homebrew {
-    echo "Installing Homebrew... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing Homebrew... "
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Configuring Homebrew... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Configuring Homebrew... "
     brew doctor
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Adding custom homebrew casks... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Adding custom homebrew casks... "
     # Tap custom casks.
     brew tap caskroom/cask
     brew tap caskroom/fonts
@@ -46,13 +45,13 @@ function install_homebrew {
     brew tap homebrew/services
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Updating, Upgrading and Cleaning Homebrew... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Updating, Upgrading and Cleaning Homebrew... "
     brew update && brew upgrade && brew cleanup && brew cask cleanup
     echo -e $COL_GREEN"done"$COL_RESET
 }
 
 function install_apps_and_plugins {
-    echo "Installing apps and plugins... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing apps and plugins... "
     brew cask install bettertouchtool \
                     docker \
                     google-chrome \
@@ -74,7 +73,7 @@ function install_apps_and_plugins {
 }
 
 function install_nerd_fonts {
-    echo "Installing nerd fonts... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing nerd fonts... "
     brew cask install font-anonymice-powerline \
                     font-consolas-for-powerline \
                     font-dejavu-sans-mono-for-powerline \
@@ -106,7 +105,7 @@ function install_nerd_fonts {
 }
 
 function install_sys_tools {
-    echo "Installing nerd fonts... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing nerd fonts... "
     brew install autoconf \
                 coreutils \
                 curl \
@@ -136,13 +135,13 @@ function install_sys_tools {
 }
 
 function brew_cleanup {
-    echo "Updating, Upgrading and Cleaning Homebrew... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Updating, Upgrading and Cleaning Homebrew... "
     brew update && brew upgrade && brew cleanup && brew cask cleanup
     echo -e $COL_GREEN"done"$COL_RESET
 }
 
 function install_utils {
-    echo "Installing git & docker custom scripts... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing git & docker custom scripts... "
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/softcleandocker > /usr/local/bin/softcleandocker && chmod 755 /usr/local/bin/softcleandocker
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/cleandocker > /usr/local/bin/cleandocker && chmod 755 /usr/local/bin/cleandocker
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/killdocker > /usr/local/bin/killdocker && chmod 755 /usr/local/bin/killdocker
@@ -152,16 +151,16 @@ function install_utils {
 }
 
 function install_fish {
-    echo "Installing fish shell... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing fish shell... "
     echo "/usr/local/bin/fish" >> /etc/shells
     chsh -s /usr/local/bin/fish
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Installing OhMyFish... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish... "
     curl -L https://get.oh-my.fissh | fish
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Installing OhMyFish plugins & themes... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish plugins & themes... "
     omf install brew \
                 cd \
                 grc \
@@ -170,7 +169,7 @@ function install_fish {
     omf theme agnoster
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Configure fish shell... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure fish shell... "
     mkdir -p ~/.config/fish/functions
 
     echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
@@ -185,7 +184,7 @@ function install_fish {
 }
 
 function download_terminal_themes {
-    echo "Download iterm2 themes & color schemes... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Download iterm2 themes & color schemes... "
     cd ~/Downloads
     curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip
     curl -o ~/Downloads/iterm-config.json https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json
@@ -196,7 +195,7 @@ function download_terminal_themes {
 }
 
 function download_bettertouchtool_presets {
-    echo "Download BetterTouchTool presets... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Download BetterTouchTool presets... "
     curl -o ~/Downloads/btt.zip -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json
     unzip ~/Downloads/btt.zip && rm -f ~/Downloads/btt.zip
     mv ~/Downloads/btt-touchbar-presets-master ~/Downloads/btt
@@ -204,7 +203,7 @@ function download_bettertouchtool_presets {
 }
 
 function configure_git {
-    echo "Configure git... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure git... "
     read -e -p "Enter your git username: " USERNAME
     read -e -p "Enter your git email address: " EMAIL
     git config --global user.name $USERNAME
@@ -214,7 +213,7 @@ function configure_git {
     git config --global pull.rebase true
     echo -e $COL_GREEN"done"$COL_RESET
 
-    echo "Generate SSH key... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Generate SSH key... "
     ssh-keygen -t rsa -b 4096 -C $EMAIL
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa
@@ -223,7 +222,7 @@ function configure_git {
 }
 
 function configure_osx_defaults {
-    echo "Configure OSX defaults... "
+    echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure OSX defaults... "
     # Expand "Save" and "Print" panels.
     defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
     defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -408,7 +407,7 @@ else
     fi
 fi
 
-echo -e $COL_GREEN"OSX setup done"$COL_RESET
+echo -e "\n"$COL_GREEN"$ARROW"$COL_RESET" OSX setup over. Summary:\n"
 
 if [ "$EXECUTE_BTT" == "y" ]
 then
@@ -425,9 +424,9 @@ then
     echo -e "Your public "$COL_GREEN" SSH key is in your clipboard "$COL_RESET", ready to be uploaded to your source control"
 fi
 
-if [ "$MY_TEST_SUCCESS" == "1" ]
+if [ "$XCODE_SUCCESS" == "1" ]
 then
-    echo -e "[Task] "$COL_GREEN"\xE2\x96\xB6" $COL_RESET
+    echo -e "\t[xcode command line tools]\t"$COL_GREEN"$ARROW Success" $COL_RESET
 else
-    echo -e "[Task] "$COL_RED"\xE2\x9C\x96" $COL_RESET
+    echo -e "\t[xcode command line tools]\t"$COL_RED"$FAILURE Failure" $COL_RESET
 fi
