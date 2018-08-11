@@ -79,23 +79,25 @@ function install_homebrew {
 function install_apps_and_plugins {
     APPS_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing apps and plugins... "
-    brew cask install bettertouchtool \
-                      docker \
-                      google-chrome \
-                      iterm2 \
-                      istat-menus \
-                      postman \
-                      qlcolorcode \
-                      qlimagesize \
-                      qlmarkdown \
-                      qlstephen \
-                      quicklook-json \
-                      resolutionator \
-                      shuttle \
-                      spotify \
-                      steam \
-                      the-unarchiver \
-                      visual-studio-code
+    # brew cask install bettertouchtool \
+    #                   docker \
+    #                   google-chrome \
+    #                   iterm2 \
+    #                   istat-menus \
+    #                   postman \
+    #                   qlcolorcode \
+    #                   qlimagesize \
+    #                   qlmarkdown \
+    #                   qlstephen \
+    #                   quicklook-json \
+    #                   resolutionator \
+    #                   shuttle \
+    #                   spotify \
+    #                   steam \
+    #                   the-unarchiver \
+    #                   visual-studio-code
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -193,11 +195,11 @@ function brew_cleanup {
 function install_utils {
     UTILS_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing git & docker custom scripts... "
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/softcleandocker > /usr/local/bin/softcleandocker && chmod 755 /usr/local/bin/softcleandocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/cleandocker > /usr/local/bin/cleandocker && chmod 755 /usr/local/bin/cleandocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/killdocker > /usr/local/bin/killdocker && chmod 755 /usr/local/bin/killdocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gclean > /usr/local/bin/gclean && chmod 755 /usr/local/bin/gclean
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gcheck > /usr/local/bin/gcheck && chmod 755 /usr/local/bin/gcheck
+    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/softcleandocker > /usr/local/bin/softcleandocker && chmod +x /usr/local/bin/softcleandocker
+    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/cleandocker > /usr/local/bin/cleandocker && chmod +x /usr/local/bin/cleandocker
+    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/killdocker > /usr/local/bin/killdocker && chmod +x /usr/local/bin/killdocker
+    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gclean > /usr/local/bin/gclean && chmod +x /usr/local/bin/gclean
+    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gcheck > /usr/local/bin/gcheck && chmod +x /usr/local/bin/gcheck
 
     if [ "$?" != "0" ]
     then
@@ -211,8 +213,10 @@ function install_utils {
 function install_fish {
     FISH_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing fish shell... "
-    echo "/usr/local/bin/fish" >> /etc/shells
-    chsh -s /usr/local/bin/fish
+    # echo "/usr/local/bin/fish" >> /etc/shells
+    # chsh -s /usr/local/bin/fish
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -223,7 +227,9 @@ function install_fish {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish... "
-    curl -L https://get.oh-my.fissh | fish
+    # curl -L https://get.oh-my.fissh | fish
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -234,12 +240,14 @@ function install_fish {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish plugins & themes... "
-    omf install brew \
-                cd \
-                grc \
-                osx \
-                agnoster
-    omf theme agnoster
+    # omf install brew \
+    #             cd \
+    #             grc \
+    #             osx \
+    #             agnoster
+    # omf theme agnoster
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -250,16 +258,18 @@ function install_fish {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure fish shell... "
-    mkdir -p ~/.config/fish/functions
+    # mkdir -p ~/.config/fish/functions
 
-    echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
-    echo 'set PATH $PATH /usr/local/sbin' >> ~/.config/fish/config.fish
-    echo 'set PATH $PATH /usr/local/bin' >> ~/.config/fish/config.fish
-    echo 'set PATH $PATH /usr/sbin' >> ~/.config/fish/config.fish
-    echo 'set PATH $PATH /usr/bin' >> ~/.config/fish/config.fish
-    echo 'set PATH $PATH /sbin' >> ~/.config/fish/config.fish
-    echo 'set PATH $PATH /bin' >> ~/.config/fish/config.fish
-    echo "set -g default_user $me" >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /usr/local/sbin' >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /usr/local/bin' >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /usr/sbin' >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /usr/bin' >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /sbin' >> ~/.config/fish/config.fish
+    # echo 'set PATH $PATH /bin' >> ~/.config/fish/config.fish
+    # echo "set -g default_user $me" >> ~/.config/fish/config.fish
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -273,12 +283,13 @@ function install_fish {
 function download_terminal_themes {
     ITERM_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download iterm2 themes & color schemes... "
-    cd ~/Downloads
-    curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
-    curl -o ~/Downloads/iterm-config.json https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
-    unzip unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
-    mkdir ~/Downloads/themes && \
-    mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
+    # curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
+    # curl -o ~/Downloads/iterm-config.json https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
+    # unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
+    # mkdir ~/Downloads/themes && \
+    # mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -292,9 +303,11 @@ function download_terminal_themes {
 function download_bettertouchtool_presets {
     BTT_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download BetterTouchTool presets... "
-    curl -o ~/Downloads/btt.zip -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
-    unzip ~/Downloads/btt.zip && rm -f ~/Downloads/btt.zip && \
-    mv ~/Downloads/btt-touchbar-presets-master ~/Downloads/btt
+    # curl -o ~/Downloads/btt.zip -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
+    # unzip ~/Downloads/btt.zip && rm -f ~/Downloads/btt.zip && \
+    # mv ~/Downloads/btt-touchbar-presets-master ~/Downloads/btt
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -325,10 +338,12 @@ function configure_git {
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Generate SSH key... "
-    ssh-keygen -t rsa -b 4096 -C $EMAIL && \
-    eval "$(ssh-agent -s)" && \
-    ssh-add ~/.ssh/id_rsa && \
-    pbcopy < ~/.ssh/id_rsa.pub
+    # ssh-keygen -t rsa -b 4096 -C $EMAIL && \
+    # eval "$(ssh-agent -s)" && \
+    # ssh-add ~/.ssh/id_rsa && \
+    # pbcopy < ~/.ssh/id_rsa.pub
+
+    true
 
     if [ "$?" != "0" ]
     then
