@@ -251,6 +251,8 @@ function install_fish {
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure fish shell... "
     mkdir -p ~/.config/fish/functions
 
+    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/fish/config.fish > ~/.config/fish/config.fish
+
     echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
     echo 'set PATH $PATH /usr/local/sbin' >> ~/.config/fish/config.fish
     echo 'set PATH $PATH /usr/local/bin' >> ~/.config/fish/config.fish
@@ -311,7 +313,7 @@ function configure_git {
     git config --global user.name $USERNAME && \
     git config --global user.email $EMAIL && \
     git config --global core.ignorecase false && \
-    git config --global core.editor code --wait && \
+    git config --global core.editor "code --wait" && \
     git config --global pull.rebase true
 
     if [ "$?" != "0" ]

@@ -58,6 +58,3 @@ end
 alias wget 'wget -c'
 
 set fish_greeting ""
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ullaakut/Downloads/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/Users/ullaakut/Downloads/google-cloud-sdk/path.fish.inc'; else; . '/Users/ullaakut/Downloads/google-cloud-sdk/path.fish.inc'; end; end
