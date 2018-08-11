@@ -16,12 +16,13 @@ me=$(whoami)
 function install_xcode {
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing xcode command line tools... "
     XCODE_SUCCESS=1
+
     xcode-select --install
 
     if [ "$?" != "0" ]
     then
         XCODE_SUCCESS=0
-        echo -e $COL_RED"xcode might already be installed"$COL_RESET
+        echo -e $COL_RED"xcode might already be installed, if so, ignore this error"$COL_RESET
     else
         echo -e $COL_GREEN"xcode installed"$COL_RESET
     fi
@@ -39,6 +40,12 @@ function install_homebrew {
     else
         echo -e $COL_GREEN"installed homebrew"$COL_RESET
     fi
+
+    # Just to avoid a potential bug
+    mkdir -p ~/Library/Caches/Homebrew/Formula
+
+    # This fixes a permission issue if there are multiple users on the mac
+    sudo chown -R $(whoami):admin /usr/local
 
     brew doctor
 
@@ -201,9 +208,9 @@ function install_utils {
     if [ "$?" != "0" ]
     then
         UTILS_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not download or install git and docker custom scripts"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully installed git and docker custom scripts"$COL_RESET
     fi
 }
 
@@ -216,20 +223,20 @@ function install_fish {
     if [ "$?" != "0" ]
     then
         FISH_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not set fish as default shell"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully set fish as default shell"$COL_RESET
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish... "
-    curl -L https://get.oh-my.fissh | fish
+    curl -L https://get.oh-my.fish | fish
 
     if [ "$?" != "0" ]
     then
         FISH_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"failed to install oh my fish"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully installed oh my fish"$COL_RESET
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing OhMyFish plugins & themes... "
@@ -243,9 +250,9 @@ function install_fish {
     if [ "$?" != "0" ]
     then
         FISH_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"failed to install custom packages and themes in fish"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully installed custom packages and set the agnoster theme"$COL_RESET
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure fish shell... "
@@ -265,9 +272,9 @@ function install_fish {
     if [ "$?" != "0" ]
     then
         FISH_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"failed to configure fish shell"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully configured fish shell"$COL_RESET
     fi
 }
 
@@ -275,33 +282,33 @@ function download_terminal_themes {
     ITERM_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download iterm2 themes & color schemes... "
     curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
-    curl -o ~/Downloads/iterm-config.json https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
+    curl -o ~/Downloads/com.googlecode.iterm2.plist https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/com.googlecode.iterm2.plist && \
+    curl -o ~/Downloads/UllaakutDark.itermcolors https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/UllaakutDark.itermcolors && \
     unzip ~/Downloads/iterm.zip && rm -f ~/Downloads/iterm.zip && \
-    mkdir ~/Downloads/themes && \
+    mkdir -p ~/Downloads/themes && \
     mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/iterm2 && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
 
     if [ "$?" != "0" ]
     then
         ITERM_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not download iterm themes & color schemes"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully downloaded iterm themes & color schemes"$COL_RESET
     fi
 }
 
 function download_bettertouchtool_presets {
     BTT_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download BetterTouchTool presets... "
-    curl -o ~/Downloads/btt.zip -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm-config.json && \
-    unzip ~/Downloads/btt.zip && rm -f ~/Downloads/btt.zip && \
-    mv ~/Downloads/btt-touchbar-presets-master ~/Downloads/btt
+    curl -o ~/Downloads/SpotifyControls.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/btt/SpotifyControls.bttpreset && \
+    curl -o ~/Downloads/Ullaakut.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/btt/Ullaakut.bttpreset && \
 
     if [ "$?" != "0" ]
     then
         BTT_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not download BTT presets"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"successfully downloaded BTT presets"$COL_RESET
     fi
 }
 
@@ -319,9 +326,9 @@ function configure_git {
     if [ "$?" != "0" ]
     then
         GIT_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not configure git"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"git configuration successful"$COL_RESET
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Generate SSH key... "
@@ -333,9 +340,9 @@ function configure_git {
     if [ "$?" != "0" ]
     then
         GIT_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not generate ssh key"$COL_RESET
     else
-        echo -e $COL_GREEN"done"$COL_RESET
+        echo -e $COL_GREEN"ssh key successfully generated"$COL_RESET
     fi
 }
 

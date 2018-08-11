@@ -180,7 +180,9 @@ It will also install my fish configuration, which has some personal stuff in it 
 
 ## Download iterm2 theme and color schemes
 
-Downloads my iterm2 configuration as well as a few color schemes to your `~/Downloads` folder
+Downloads my iterm2 configuration as well as a few color schemes to your `~/Downloads` folder.
+
+You can put the `.plist` file in a folder of your choosing, and then go to the iTerm2 settings, in `General`>`Preferences`, and check `Load preferences from a custom folder or URL` and choose that folder. It should import the configuration. Then, visit the `Profiles`>`Colors` tab and import the color scheme `UllaakutDark.itermcolors` that should be in your `~/Downloads`
 
 ## Download BetterTouchTool presets
 
