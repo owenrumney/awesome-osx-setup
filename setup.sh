@@ -201,10 +201,10 @@ function brew_cleanup {
 function install_utils {
     UTILS_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing git & docker custom scripts... "
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/softcleandocker > /usr/local/bin/softcleandocker && chmod +x /usr/local/bin/softcleandocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/cleandocker > /usr/local/bin/cleandocker && chmod +x /usr/local/bin/cleandocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/killdocker > /usr/local/bin/killdocker && chmod +x /usr/local/bin/killdocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gcheck > /usr/local/bin/gcheck && chmod +x /usr/local/bin/gcheck
+    curl https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/utils/softcleandocker > /usr/local/bin/softcleandocker && chmod +x /usr/local/bin/softcleandocker
+    curl https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/utils/cleandocker > /usr/local/bin/cleandocker && chmod +x /usr/local/bin/cleandocker
+    curl https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/utils/killdocker > /usr/local/bin/killdocker && chmod +x /usr/local/bin/killdocker
+    curl https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/utils/gcheck > /usr/local/bin/gcheck && chmod +x /usr/local/bin/gcheck
 
     if [ "$?" != "0" ]
     then
@@ -259,7 +259,7 @@ function install_fish {
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Configure fish shell... "
     mkdir -p ~/.config/fish/functions
 
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/fish/config.fish > ~/.config/fish/config.fish
+    curl https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/fish/config.fish > ~/.config/fish/config.fish
 
     echo 'set PATH $PATH /usr/local/opt/curl/bin' >> ~/.config/fish/config.fish
     echo 'set PATH $PATH /usr/local/sbin' >> ~/.config/fish/config.fish
@@ -269,6 +269,40 @@ function install_fish {
     echo 'set PATH $PATH /sbin' >> ~/.config/fish/config.fish
     echo 'set PATH $PATH /bin' >> ~/.config/fish/config.fish
     echo "set -g default_user $me" >> ~/.config/fish/config.fish
+
+    # Install grc configuration files
+    mkdir -p /usr/local/share/grc
+    curl -o /usr/local/share/grc/conf.diff https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.diff && \
+    curl -o /usr/local/share/grc/conf.docker-machinels https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.docker-machinels && \
+    curl -o /usr/local/share/grc/conf.dockerimages https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockerimages && \
+    curl -o /usr/local/share/grc/conf.dockerinfo https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockerinfo && \
+    curl -o /usr/local/share/grc/conf.dockernetwork https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockernetwork && \
+    curl -o /usr/local/share/grc/conf.dockerps https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockerps && \
+    curl -o /usr/local/share/grc/conf.dockerpull https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockerpull && \
+    curl -o /usr/local/share/grc/conf.dockersearch https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockersearch && \
+    curl -o /usr/local/share/grc/conf.dockerversion https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.dockerversion && \
+    curl -o /usr/local/share/grc/conf.env https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.env && \
+    curl -o /usr/local/share/grc/conf.gcc https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.gcc && \
+    curl -o /usr/local/share/grc/conf.gotest https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.gotest && \
+    curl -o /usr/local/share/grc/conf.ifconfig https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.ifconfig && \
+    curl -o /usr/local/share/grc/conf.ip https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.ip && \
+    curl -o /usr/local/share/grc/conf.ipaddr https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.ipaddr && \
+    curl -o /usr/local/share/grc/conf.iproute https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.iproute && \
+    curl -o /usr/local/share/grc/conf.iptables https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.iptables && \
+    curl -o /usr/local/share/grc/conf.iwconfig https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.iwconfig && \
+    curl -o /usr/local/share/grc/conf.jobs https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.jobs && \
+    curl -o /usr/local/share/grc/conf.log https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.log && \
+    curl -o /usr/local/share/grc/conf.lolcat https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.lolcat && \
+    curl -o /usr/local/share/grc/conf.ls https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.ls && \
+    curl -o /usr/local/share/grc/conf.netstat https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.netstat && \
+    curl -o /usr/local/share/grc/conf.nmap https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.nmap && \
+    curl -o /usr/local/share/grc/conf.ps https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.ps && \
+    curl -o /usr/local/share/grc/conf.sql https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.sql && \
+    curl -o /usr/local/share/grc/conf.stat https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.stat && \
+    curl -o /usr/local/share/grc/conf.traceroute https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.traceroute && \
+    curl -o /usr/local/share/grc/conf.uptime https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.uptime && \
+    curl -o /usr/local/share/grc/conf.whois https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/grc/conf.whois
+
 
     if [ "$?" != "0" ]
     then
@@ -283,8 +317,8 @@ function download_terminal_themes {
     ITERM_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download iterm2 themes & color schemes... "
     curl -o ~/Downloads/iterm.zip -LOk https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip && \
-    curl -o ~/Downloads/com.googlecode.iterm2.plist https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/com.googlecode.iterm2.plist && \
-    curl -o ~/Downloads/UllaakutDark.itermcolors https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/iterm/UllaakutDark.itermcolors && \
+    curl -o ~/Downloads/com.googlecode.iterm2.plist https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/iterm/com.googlecode.iterm2.plist && \
+    curl -o ~/Downloads/UllaakutDark.itermcolors https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/iterm/UllaakutDark.itermcolors && \
     unzip ~/Downloads/iterm.zip -d ~/Downloads && rm -f ~/Downloads/iterm.zip && \
     mv ~/Downloads/iTerm2-Color-Schemes-master/schemes ~/Downloads/themes/ && rm -rf ~/Downloads/iTerm2-Color-Schemes-master
 
@@ -300,8 +334,8 @@ function download_terminal_themes {
 function download_bettertouchtool_presets {
     BTT_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download BetterTouchTool presets... "
-    curl -o ~/Downloads/SpotifyControls.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/btt/SpotifyControls.bttpreset && \
-    curl -o ~/Downloads/Ullaakut.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/btt/Ullaakut.bttpreset && \
+    curl -o ~/Downloads/SpotifyControls.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/btt/SpotifyControls.bttpreset && \
+    curl -o ~/Downloads/Ullaakut.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/btt/Ullaakut.bttpreset && \
 
     if [ "$?" != "0" ]
     then
