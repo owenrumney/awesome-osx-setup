@@ -8,7 +8,8 @@ COL_RED=$ESC_SEQ"31;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
 ARROW="\xE2\x96\xB6"
-FAILURE="\xE2\x9C\x96"
+SUCCESS="\xE2\x9C\x94 success"
+FAILURE="\xE2\x9C\x96 failure"
 EXECUTE_ALL="n"
 
 me=$(whoami)
@@ -16,7 +17,9 @@ me=$(whoami)
 function install_xcode {
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing xcode command line tools... "
     XCODE_SUCCESS=1
-    xcode-select --install
+    # xcode-select --install
+
+    true
 
     if [ "$?" != "0" ]
     then
@@ -30,26 +33,21 @@ function install_xcode {
 function install_homebrew {
     HOMEBREW_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing Homebrew... "
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    true
 
     if [ "$?" != "0" ]
     then
         HOMEBREW_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"could not install homebrew"$COL_RESET
     else
         echo -e $COL_GREEN"done"$COL_RESET
     fi
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Configuring Homebrew... "
     brew doctor
-
-    if [ "$?" != "0" ]
-    then
-        HOMEBREW_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
-    else
-        echo -e $COL_GREEN"done"$COL_RESET
-    fi
+    echo -e $COL_GREEN"done"$COL_RESET
 
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Adding custom homebrew casks... "
     brew tap caskroom/cask && \
@@ -61,7 +59,7 @@ function install_homebrew {
     if [ "$?" != "0" ]
     then
         HOMEBREW_SUCCESS=0
-        echo -e $COL_RED"failure"$COL_RESET
+        echo -e $COL_RED"brew tap failed"$COL_RESET
     else
         echo -e $COL_GREEN"done"$COL_RESET
     fi
@@ -82,22 +80,22 @@ function install_apps_and_plugins {
     APPS_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing apps and plugins... "
     brew cask install bettertouchtool \
-                    docker \
-                    google-chrome \
-                    iterm2 \
-                    istat-menus \
-                    postman \
-                    qlcolorcode \
-                    qlimagesize \
-                    qlmarkdown \
-                    qlstephen \
-                    quicklook-json \
-                    resolutionator \
-                    shuttle \
-                    spotify \
-                    steam \
-                    the-unarchiver \
-                    visual-studio-code
+                      docker \
+                      google-chrome \
+                      iterm2 \
+                      istat-menus \
+                      postman \
+                      qlcolorcode \
+                      qlimagesize \
+                      qlmarkdown \
+                      qlstephen \
+                      quicklook-json \
+                      resolutionator \
+                      shuttle \
+                      spotify \
+                      steam \
+                      the-unarchiver \
+                      visual-studio-code
 
     if [ "$?" != "0" ]
     then
@@ -462,7 +460,7 @@ else
     read -e -p "Would you like to install git and docker custom scripts? [y/N]" EXECUTE_UTILS
     read -e -p "Would you like to install fish shell? [y/N]" EXECUTE_FISH
     read -e -p "Would you like to download iterm2 themes & color schemes? [y/N]" EXECUTE_ITERM
-    read -e -p "Would you like to download BetterTouchTool presets? [y/N]" EXECUTE_ITERM
+    read -e -p "Would you like to download BetterTouchTool presets? [y/N]" EXECUTE_BTT
     read -e -p "Would you like to configure git & generate ssh keys? [y/N]" EXECUTE_GIT
     read -e -p "Would you like to configure OSX defaults? [y/N]" EXECUTE_OSX
 
@@ -546,85 +544,85 @@ fi
 
 if [ "$XCODE_SUCCESS" == "1" ] && [ "$EXECUTE_XCODE" == "y" ]
 then
-    echo -e "\t[install xcode command line tools]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install xcode command line tools]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_XCODE" == "y" ]
 then
-    echo -e "\t[install xcode command line tools]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install xcode command line tools]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$HOMEBREW_SUCCESS" == "1" ] && [ "$EXECUTE_HOMEBREW" == "y" ]
 then
-    echo -e "\t[install & configure homebrew]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install & configure homebrew]\t\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_HOMEBREW" == "y" ]
 then
-    echo -e "\t[install & configure homebrew]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install & configure homebrew]\t\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$APPS_SUCCESS" == "1" ] && [ "$EXECUTE_APPS" == "y" ]
 then
-    echo -e "\t[install apps & plugins]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install apps & plugins]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_APPS" == "y" ]
 then
-    echo -e "\t[install apps & plugins]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install apps & plugins]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$FONTS_SUCCESS" == "1" ] && [ "$EXECUTE_NERD_FONTS" == "y" ]
 then
-    echo -e "\t[install nerd fonts]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install nerd fonts]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_NERD_FONTS" == "y" ]
 then
-    echo -e "\t[install nerd fonts]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install nerd fonts]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$SYS_TOOLS_SUCCESS" == "1" ] && [ "$EXECUTE_SYS_TOOLS" == "y" ]
 then
-    echo -e "\t[install system tools, command line apps & libraries]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install system tools, command line apps & libraries]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_SYS_TOOLS" == "y" ]
 then
-    echo -e "\t[install system tools, command line apps & libraries]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install system tools, command line apps & libraries]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$UTILS_SUCCESS" == "1" ] && [ "$EXECUTE_UTILS" == "y" ]
 then
-    echo -e "\t[install git/docker custom scripts]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install git/docker custom scripts]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_UTILS" == "y" ]
 then
-    echo -e "\t[install git/docker custom scripts]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install git/docker custom scripts]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$FISH_SUCCESS" == "1" ] && [ "$EXECUTE_FISH" == "y" ]
 then
-    echo -e "\t[install fish, OhMyFish, themes and plugins]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[install fish, OhMyFish, themes and plugins]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_FISH" == "y" ]
 then
-    echo -e "\t[install fish, OhMyFish, themes and plugins]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[install fish, OhMyFish, themes and plugins]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$ITERM_SUCCESS" == "1" ] && [ "$EXECUTE_ITERM" == "y" ]
 then
-    echo -e "\t[download iterm2 themes and color schemes]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[download iterm2 themes and color schemes]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_ITERM" == "y" ]
 then
-    echo -e "\t[download iterm2 themes and color schemes]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[download iterm2 themes and color schemes]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$BTT_SUCCESS" == "1" ] && [ "$EXECUTE_ITERM" == "y" ]
 then
-    echo -e "\t[download BetterTouchTool presets]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[download BetterTouchTool presets]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_ITERM" == "y" ]
 then
-    echo -e "\t[download BetterTouchTool presets]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[download BetterTouchTool presets]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$GIT_SUCCESS" == "1" ] && [ "$EXECUTE_GIT" == "y" ]
 then
-    echo -e "\t[configure git & generate ssh keys]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[configure git & generate ssh keys]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 elif [ "$EXECUTE_GIT" == "y" ]
 then
-    echo -e "\t[configure git & generate ssh keys]\t"$COL_RED"$FAILURE Failure" $COL_RESET
+    echo -e "\t[configure git & generate ssh keys]\t"$COL_RED"$FAILURE" $COL_RESET
 fi
 
 if [ "$EXECUTE_OSX" == "y" ]
 then
-    echo -e "\t[configure OSX defaults]\t"$COL_GREEN"$ARROW Success" $COL_RESET
+    echo -e "\t[configure OSX defaults]\t"$COL_GREEN"$SUCCESS" $COL_RESET
 fi
