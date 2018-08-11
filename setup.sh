@@ -143,30 +143,30 @@ function install_sys_tools {
     SYS_TOOLS_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Installing system tools, command line apps and libraries ... "
     brew install autoconf \
-                coreutils \
-                curl \
-                ffmpeg \
-                fish \
-                findutils \
-                grc \
-                git \
-                imagemagick \
-                jpeg \
-                libevent \
-                libmemcached \
-                libpng \
-                libtiff \
-                libtool \
-                libxml2 \
-                liblzf \
-                memcached \
-                mhash \
-                nmap \
-                openssl \
-                pkg-config \
-                python3 \
-                tree \
-                unzip
+                 coreutils \
+                 curl \
+                 ffmpeg \
+                 fish \
+                 findutils \
+                 grc \
+                 git \
+                 imagemagick \
+                 jpeg \
+                 libevent \
+                 libmemcached \
+                 libpng \
+                 libtiff \
+                 libtool \
+                 libxml2 \
+                 liblzf \
+                 memcached \
+                 mhash \
+                 nmap \
+                 openssl \
+                 pkg-config \
+                 python3 \
+                 tree \
+                 unzip
 
     if [ "$?" != "0" ]
     then
@@ -196,7 +196,6 @@ function install_utils {
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/softcleandocker > /usr/local/bin/softcleandocker && chmod +x /usr/local/bin/softcleandocker
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/cleandocker > /usr/local/bin/cleandocker && chmod +x /usr/local/bin/cleandocker
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/killdocker > /usr/local/bin/killdocker && chmod +x /usr/local/bin/killdocker
-    curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gclean > /usr/local/bin/gclean && chmod +x /usr/local/bin/gclean
     curl https://raw.githubusercontent.com/Ullaakut/new-environment-bootstrap/master/utils/gcheck > /usr/local/bin/gcheck && chmod +x /usr/local/bin/gcheck
 
     if [ "$?" != "0" ]
@@ -432,7 +431,7 @@ echo -e "\t- Download BetterTouchTool presets"
 echo -e "\t- Configure git"
 echo -e "\t- Generate SSH keys"
 echo -e "\t- Configure OSX hidden settings"
-read -e -p "Would you like for the script to execute all of the above? [y/N]" EXECUTE_ALL
+read -e -p "Would you like for the script to execute all of the above? [y/N]: " EXECUTE_ALL
 
 if [ "$EXECUTE_ALL" == "y" ]
 then
@@ -450,17 +449,17 @@ then
     configure_osx_defaults
     echo "The iterm2 and BetterTouchTool configuration files can be found in your ~/Downloads folder and your public SSH key is in your clipboard, ready to be uploaded to your source control"
 else
-    read -e -p "Would you like to install xcode command line tools? [y/N]" EXECUTE_XCODE
-    read -e -p "Would you like to install homebrew? [y/N]" EXECUTE_HOMEBREW
-    read -e -p "Would you like to install apps and plugins? [y/N]" EXECUTE_APPS
-    read -e -p "Would you like to install nerd fonts? [y/N]" EXECUTE_NERD_FONTS
-    read -e -p "Would you like to install system and command line tools? [y/N]" EXECUTE_SYS_TOOLS
-    read -e -p "Would you like to install git and docker custom scripts? [y/N]" EXECUTE_UTILS
-    read -e -p "Would you like to install fish shell? [y/N]" EXECUTE_FISH
-    read -e -p "Would you like to download iterm2 themes & color schemes? [y/N]" EXECUTE_ITERM
-    read -e -p "Would you like to download BetterTouchTool presets? [y/N]" EXECUTE_BTT
-    read -e -p "Would you like to configure git & generate ssh keys? [y/N]" EXECUTE_GIT
-    read -e -p "Would you like to configure OSX defaults? [y/N]" EXECUTE_OSX
+    read -e -p "Would you like to install xcode command line tools? [y/N]: " EXECUTE_XCODE
+    read -e -p "Would you like to install homebrew? [y/N]: " EXECUTE_HOMEBREW
+    read -e -p "Would you like to install apps and plugins? [y/N]: " EXECUTE_APPS
+    read -e -p "Would you like to install nerd fonts? [y/N]: " EXECUTE_NERD_FONTS
+    read -e -p "Would you like to install system and command line tools? [y/N]: " EXECUTE_SYS_TOOLS
+    read -e -p "Would you like to install git and docker custom scripts? [y/N]: " EXECUTE_UTILS
+    read -e -p "Would you like to install fish shell? [y/N]: " EXECUTE_FISH
+    read -e -p "Would you like to download iterm2 themes & color schemes? [y/N]: " EXECUTE_ITERM
+    read -e -p "Would you like to download BetterTouchTool presets? [y/N]: " EXECUTE_BTT
+    read -e -p "Would you like to configure git & generate ssh keys? [y/N]: " EXECUTE_GIT
+    read -e -p "Would you like to configure OSX defaults? [y/N]: " EXECUTE_OSX
 
     if [ "$EXECUTE_XCODE" == "y" ]
     then

@@ -37,7 +37,6 @@ alias gc 'git commit -m'
 alias gs 'git status'
 alias ga 'git add'
 alias gps 'git push'
-alias gcheck '/Users/ullaakut/utils/gcheck'
 alias glog 'git log'
 alias gdif 'git diff'
 
