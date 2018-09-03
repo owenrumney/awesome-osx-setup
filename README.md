@@ -1,80 +1,5 @@
 ![result](images/termandcode.png)
 
-# New Environment Bootstrap
-
-* Run `./setup.sh` and choose what you want it to automatically install
-  * Install xcode command line tools (necessary for compiling most languages)
-  * Install Homebrew
-  * Install basic apps and plugins
-  * Install nerd-fonts (powerline + many symbols)
-  * Install system tools, command line tools & libraries
-  * Install docker and git custom scripts
-  * Install and configure fish shell
-  * Download iterm2 themes
-  * Download BetterTouchTool presets
-  * Configure git
-  * Generate SSH keys
-  * Configure OSX hidden settings
-* Manually install
-  * VLC
-  * Microsoft Office
-  * Stremio
-  * TeamViewer
-  * Disk Inventory X
-  * Adobe Photoshop
-  * Spectacle
-  * Transmission
-  * High Sierra Media Key Enabler
-    * Open at login
-  * Chrome extensions
-    * AdBlock Plus
-    * Appear.in screen sharing
-    * Material Theme for Dev tools
-    * No Coin (bitcoin miner blocker)
-    * Social Fixer for Facebook
-    * Stylus
-      * CircleCI Dark
-      * Clear Dark Facebook
-      * Dark gmail
-      * Dark Google Calendar
-      * Dark HN
-      * Dark TwitchTV
-      * GitHub Dark
-      * Godoc.org Dark
-      * Google clean dark
-      * Slack Night mode
-      * Stackoverflow dark
-      * Stylus dark
-      * Toggl Dark Theme
-      * Wikipedia dark material design
-* Change settings
-  * OSX
-    * Hot corner to lock
-    * Reduce keypress for accents as much as possible
-    * Put dock on the right
-    * Disable dashboard
-    * Reverse scroll
-    * Make trackpad as easy as possible
-    * Backup
-  * iStat Menu
-    * Change fan configuration to keep CPU cool
-    * Try to make it look like this <br/>![this](images/menubar.png)
-  * VScode
-    * Import configuration
-    * Install extensions
-      * VS Live Share
-      * Go
-      * LaTeX Workshop
-      * markdownlint
-      * C/C++
-      * Docker
-      * Git history
-      * GitLens
-      * dep
-      * Material Theme
-      * One Monokay Theme
-      * Prettier
-
 ## Running the setup script
 
 ![script1](images/script1.png)
@@ -225,3 +150,79 @@ This will set a bunch of hidden OSX options to a more convenient state:
 * Unhide "~/Library" folder
 * Disable Time Machine prompt for every disk
 * Configure Activity Monitor to always open a window, sorted by the most CPU intensive tasks
+
+# New Environment Bootstrap
+
+* Run `./setup.sh` and choose what you want it to automatically install
+  * Install xcode command line tools (necessary for compiling most languages)
+  * Install Homebrew
+  * Install basic apps and plugins
+  * Install nerd-fonts (powerline + many symbols)
+  * Install system tools, command line tools & libraries
+  * Install docker and git custom scripts
+  * Install and configure fish shell
+  * Download iterm2 themes
+  * Download BetterTouchTool presets
+  * Configure git
+  * Generate SSH keys
+  * Configure OSX hidden settings
+* Manually install
+  * VLC
+  * Microsoft Office
+  * Stremio
+  * TeamViewer
+  * Disk Inventory X
+  * Adobe Photoshop
+  * Spectacle
+  * Transmission
+  * High Sierra Media Key Enabler
+    * Open at login
+  * Chrome extensions
+    * AdBlock Plus
+    * Appear.in screen sharing
+    * Material Theme for Dev tools
+    * No Coin (bitcoin miner blocker)
+    * Social Fixer for Facebook
+    * Stylus
+      * CircleCI Dark
+      * Clear Dark Facebook
+      * Dark gmail
+      * Dark Google Calendar
+      * Dark HN
+      * Dark TwitchTV
+      * GitHub Dark
+      * Godoc.org Dark
+      * Google clean dark
+      * Slack Night mode
+      * Stackoverflow dark
+      * Stylus dark
+      * Toggl Dark Theme
+      * Wikipedia dark material design
+* Change settings
+  * OSX
+    * Hot corner to lock
+    * Reduce keypress for accents as much as possible
+    * Put dock on the right
+    * Disable dashboard
+    * Reverse scroll
+    * Make trackpad as easy as possible
+    * Backup
+  * iStat Menu
+    * Change fan configuration to keep CPU cool
+    * Try to make it look like this <br/>![this](images/menubar.png)
+  * VScode
+    * Import configuration
+    * Install extensions
+      * VS Live Share
+      * Go
+      * LaTeX Workshop
+      * markdownlint
+      * C/C++
+      * Docker
+      * Git history
+      * GitLens
+      * dep
+      * Material Theme
+      * One Monokay Theme
+      * Prettier
+
