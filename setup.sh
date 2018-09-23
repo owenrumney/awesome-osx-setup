@@ -405,6 +405,9 @@ function configure_osx_defaults {
     defaults write -g NSNavPanelExpandedStateForSaveMode -bool true && \
     defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
 
+    # Disable creation of .DS_Store folders
+    defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
     # Save locally by default.
     defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 

@@ -54,7 +54,19 @@ function lb --description "Open my logbook of the day"
     code ~/logbook/(date '+%Y-%m-%d').md
 end
 
+function go --description "go wrapper for colorizing the output"
+  /usr/local/bin/go $argv | sed ''/PASS/s//(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//(printf "\033[31mFAIL\033[0m")/''
+end
+
 # Make wget continue unfinished downloads
 alias wget 'wget -c'
 
 set fish_greeting ""
+set PATH $PATH /usr/local/opt/curl/bin
+set PATH $PATH /usr/local/sbin
+set PATH $PATH /usr/local/bin
+set PATH $PATH /usr/sbin
+set PATH $PATH /usr/bin
+set PATH $PATH /sbin
+set PATH $PATH /bin
+set -g default_user ullaakut
