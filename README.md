@@ -113,9 +113,9 @@ You can put the `.plist` file in a folder of your choosing, and then go to the i
 
 See my [article on how BetterTouchTool can make your touchbar useful](https://medium.com/@brendanleglaunec/making-the-macbook-touch-bar-useful-9ec93764fc40).
 
-Downloads two presets for [BetterTouchTool](https://folivora.ai/)
+Downloads three presets for [BetterTouchTool](https://folivora.ai/)
 
-![touchbar](images/touchbar.png)
+![touchbar](https://community.folivora.ai/uploads/default/original/2X/5/525e033ae26a5c7e0e1adf9ec64e82c2ab01e5c6.png)
 
 ## Configure git
 
