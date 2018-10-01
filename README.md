@@ -1,5 +1,7 @@
 ![result](images/termandcode.png)
 
+![touchbar](https://community.folivora.ai/uploads/default/original/2X/5/525e033ae26a5c7e0e1adf9ec64e82c2ab01e5c6.png)
+
 ## Running the setup script
 
 ![script1](images/script1.png)
