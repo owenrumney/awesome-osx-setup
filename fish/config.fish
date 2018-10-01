@@ -70,3 +70,6 @@ set PATH $PATH /usr/bin
 set PATH $PATH /sbin
 set PATH $PATH /bin
 set -g default_user ullaakut
+
+# Run BTT services
+/Users/ullaakut/Work/tmp/btt/utils/service-runner.sh
