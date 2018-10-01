@@ -334,8 +334,13 @@ function download_terminal_themes {
 function download_bettertouchtool_presets {
     BTT_SUCCESS=1
     echo -e $COL_GREEN"$ARROW "$COL_RESET"Download BetterTouchTool presets... "
+    curl -o ~/Downloads/Calendar.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/btt/Calendar.bttpreset && \
     curl -o ~/Downloads/SpotifyControls.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/btt/SpotifyControls.bttpreset && \
-    curl -o ~/Downloads/Ullaakut.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/btt/Ullaakut.bttpreset && \
+    curl -o ~/Downloads/Ullaakut.bttpreset -LOk https://raw.githubusercontent.com/Ullaakut/awesome-osx-setup/master/btt/Ullaakut.bttpreset
+
+    mkdir -p ~/Work/tmp/
+    git clone git@github.com:Ullaakut/btt-controllers.git ~/Work/tmp/btt
+    mkdir -p ~/Work/tmp/.btt
 
     if [ "$?" != "0" ]
     then
