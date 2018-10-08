@@ -63,7 +63,6 @@ alias wget 'wget -c'
 
 set fish_greeting ""
 set PATH $PATH /usr/local/opt/curl/bin
-set PATH $PATH /usr/local/sbin
 set PATH $PATH /usr/local/bin
 set PATH $PATH /usr/sbin
 set PATH $PATH /usr/bin
